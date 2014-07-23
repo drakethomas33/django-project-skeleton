@@ -1,13 +1,25 @@
 """Common settings and globals."""
 
-
-from os.path import abspath, basename, dirname, join, normpath
+import os
+from os.path import abspath, basename, dirname, exists, join, normpath, realpath
 from sys import path
+
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name):
+    """Get the environment variable or return exception."""
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
 
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+SETTINGS_DIR = realpath(dirname(__file__))
+DJANGO_ROOT = dirname(dirname(abspath(__file__)))  # one level up from this file
 
 # Absolute filesystem path to the top-level project folder:
 SITE_ROOT = dirname(DJANGO_ROOT)
@@ -43,15 +55,9 @@ MANAGERS = ADMINS
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
+    'default': dj_database_url.config()  # Parse database configuration from $DATABASE_URL
 }
 ########## END DATABASE CONFIGURATION
 
@@ -87,15 +93,19 @@ MEDIA_URL = '/media/'
 
 
 ########## STATIC FILE CONFIGURATION
+# Static asset configuration
+if not exists(join(DJANGO_ROOT, 'static')):
+    raise ImproperlyConfigured("No /static/ directory inside /project/")
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
+STATIC_ROOT = join(DJANGO_ROOT, 'staticfiles')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    normpath(join(SITE_ROOT, 'static')),
+    join(DJANGO_ROOT, 'static'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -109,7 +119,7 @@ STATICFILES_FINDERS = (
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key should only be used for development and testing.
-SECRET_KEY = r"{{ secret_key }}"
+SECRET_KEY = r"2!^aooqs9f_$%p*9ky*)zw9@e#=)c#r@amlo6t=@nbx&9q!@49"
 ########## END SECRET CONFIGURATION
 
 
@@ -149,7 +159,7 @@ TEMPLATE_LOADERS = (
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
 TEMPLATE_DIRS = (
-    normpath(join(SITE_ROOT, 'templates')),
+    normpath(join(DJANGO_ROOT, 'templates')),
 )
 ########## END TEMPLATE CONFIGURATION
 
@@ -232,6 +242,7 @@ LOGGING = {
     }
 }
 ########## END LOGGING CONFIGURATION
+
 
 
 ########## WSGI CONFIGURATION
