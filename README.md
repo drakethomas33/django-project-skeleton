@@ -41,4 +41,10 @@ and sync your database:
 
 The two export statements above are good candidates to be put into an env_development file at the top level of your repository (not checked in!).
 
-Now run the server and check <http://localhost:8000>
+Now run the server and check <http://localhost:8000>.
+
+Now run
+
+    git init
+
+and follow the instructions on GitHub to create a new repository to push to.
