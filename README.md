@@ -15,7 +15,7 @@ This will produce the top level directory /project/ with /project/ inside. I don
 
 Then do the standard virtual environment stuff (note, the requirements live in a directory and the top level requirements.txt points to production.txt).
 
-    cd new_project_name/
+    cd new_project/
 
     virtualenv venv --distribute --no-site-packages
 
