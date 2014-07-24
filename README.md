@@ -40,3 +40,5 @@ and sync your database:
     python manage.py syncdb
 
 The two export statements above are good candidates to be put into an env_development file at the top level of your repository (not checked in!).
+
+Now run the server and check <http://localhost:8000>
