@@ -52,3 +52,6 @@ venv
 
 #Development environment variables
 env_development
+
+# no sass cache
+.sass-cache

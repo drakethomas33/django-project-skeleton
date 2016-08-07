@@ -1,0 +1,22 @@
+{
+  "name": "django-project-skeleton",
+  "homepage": "https://github.com/drakethomas33/django-project-skeleton",
+  "authors": [
+    "''"
+  ],
+  "description": "",
+  "main": "",
+  "license": "''",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "project/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
