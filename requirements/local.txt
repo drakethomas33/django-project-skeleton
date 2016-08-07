@@ -1,5 +1,5 @@
 # Local development dependencies go here
--r test.txt
+-r base.txt
 django-debug-toolbar==1.5
 Sphinx==1.4.5
 coverage==4.2
