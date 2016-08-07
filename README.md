@@ -17,27 +17,27 @@ Command below references Python 3.5 in line with the runtime.txt file that speci
 
     sudo pip install -r requirements/local.txt
 
-You will need to have Postgres installed locally, on Mac OS X you should use the [Postgres App](http://postgresapp.com/). You will need to make sure your system is looking at this app:
+Create your database:
 
+    createdb <db_name>
+
+Customise Django settings:
+
+
+
+Copy these commands into an env_development file and run it:
+
+    # You will need to have Postgres installed locally.
+    # For Mac OS X, see http://postgresapp.com/
     export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
-You can then create your database:
+    # This is your local database URL
+    export DATABASE_URL=postgres://localhost:5432/<db_name>
 
-    createdb new_project
-
-Export your DATABASE_URL setting:
-
-    export DATABASE_URL=postgres://localhost:5432/new_project
-
-Make sure Django is looking at the right settings module:
-
+    # This is your local settings file
     export DJANGO_SETTINGS_MODULE=project.settings.local
 
-You'll probably want to copy these commands into an env_development file:
-
-    export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-    export DATABASE_URL=postgres://localhost:5432/new_project
-    export DJANGO_SETTINGS_MODULE=project.settings.local
+Now run the server and check <http://localhost:8000>.
 
 then make migrations and migrate:
 
@@ -51,3 +51,8 @@ Now run
     git init
 
 and follow the instructions on GitHub to create a new repository to push to.
+
+Note white noise for static files
+Note bower
+Note SASS / Compass
+index.html served static, including Angular
