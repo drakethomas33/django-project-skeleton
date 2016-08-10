@@ -1,7 +1,7 @@
 django-project-skeleton
 =======================
 
-My preferred Django project template, very strongly influenced by the great [twoscoops repository](https://github.com/twoscoops/django-twoscoops-project).
+My Django project template, strongly influenced by [twoscoops repository](https://github.com/twoscoops/django-twoscoops-project).
 
 That said, that project was meant to be used with Django 1.6, and this is updated to run with 1.9.9.
 Also, this template is specifically geared towards Django apps to be run on Heroku.
@@ -23,7 +23,7 @@ Create your database:
 
 Customise Django settings:
 
-
+...
 
 Copy these commands into an env_development file and run it:
 
@@ -46,8 +46,9 @@ then make migrations and migrate:
 
 Now run the server and check <http://localhost:8000>.
 
-Now run
+Delete .git from django-project-skeleton and re-init:
 
+    sudo rm -rf .git
     git init
 
 and follow the instructions on GitHub to create a new repository to push to.
