@@ -53,7 +53,6 @@ Delete .git from django-project-skeleton and re-init:
 
 and follow the instructions on GitHub to create a new repository to push to.
 
-Note white noise for static files
-Note bower
-Note SASS / Compass
-index.html served static, including Angular
+Then you can set up Heroku!
+
+White noise for static files - set up a CDN at some point: http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
