@@ -6,7 +6,16 @@ My Django project template, strongly influenced by [twoscoops repository](https:
 That said, that project was meant to be used with Django 1.6, and this is updated to run with 1.9.9.
 Also, this template is specifically geared towards Django apps to be run on Heroku.
 
-First, clone the project. Then do the standard virtual environment stuff (note, the requirements live in a directory and the top level requirements.txt points to production.txt).
+First, clone the project.
+
+    git clone https://github.com/drakethomas33/django-project-skeleton.git KiteWebSDK
+
+Delete .git from django-project-skeleton and re-init:
+
+    sudo rm -rf .git
+    git init
+
+Then do the standard virtual environment stuff (note, the requirements live in a directory and the top level requirements.txt points to production.txt).
 Command below references Python 3.5 in line with the runtime.txt file that specifies python-3.5.2. You may need to replace the path below with your local path to Python 3.5.
 
     cd new_project/
@@ -17,13 +26,13 @@ Command below references Python 3.5 in line with the runtime.txt file that speci
 
     sudo pip install -r requirements/local.txt
 
-Create your database:
-
-    createdb <db_name>
-
 Customise Django settings:
 
 ...
+
+Create your database:
+
+    createdb <db_name>
 
 Copy these commands into an env_development file and run it:
 
@@ -45,11 +54,6 @@ then make migrations and migrate:
     python manage.py migrate
 
 Now run the server and check <http://localhost:8000>.
-
-Delete .git from django-project-skeleton and re-init:
-
-    sudo rm -rf .git
-    git init
 
 and follow the instructions on GitHub to create a new repository to push to.
 
